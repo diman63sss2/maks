@@ -60,12 +60,18 @@ const Form = () => {
         const formData = new FormData();
         formData.append("original_image", fileOriginal);
         formData.append("style_image", fileStyle);
-        const response = await axios({
-            method: "post",
-            url: url,
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-        }).then(response => setAnswer(response));
+        axios
+            .post("http://localhost:8080/api/receive/VGG19", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
 
