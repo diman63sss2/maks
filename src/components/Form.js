@@ -22,12 +22,7 @@ const Form = () => {
             return;
         }
 
-        let fileReader = new FileReader();
-        fileReader.onload = function() {
-            setImgUrl1(fileReader.result);
-        }
-
-        fileReader.readAsDataURL(target.files[0]);
+        setImgUrl1(target.files);
     }
 
     const myImgonChange2 = function(event) {
@@ -43,20 +38,18 @@ const Form = () => {
             return;
         }
 
-        let fileReader = new FileReader();
-        fileReader.onload = function() {
-            setImgUrl2(fileReader.result);
-        }
+        setImgUrl2(target.files);
 
-        fileReader.readAsDataURL(target.files[0]);
     }
 
     let url = 'http://localhost:8080/api/receive/VGG19';
 
     const handleSubmit = async(event) => {
         event.preventDefault()
-        let fileOriginal = imgUrl1;
-        let fileStyle = imgUrl2;
+        let fileOriginal = imgUrl1[0];
+        let fileStyle = imgUrl2[0];
+        console.log(fileOriginal)
+        console.log(fileStyle)
         const formData = new FormData();
         formData.append("original_image", fileOriginal);
         formData.append("style_image", fileStyle);
