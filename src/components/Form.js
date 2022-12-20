@@ -98,17 +98,87 @@ const Form = () => {
             axios
                 .get('http://localhost:8080/api/receive/VGG19/' + uidRequest.uuidRequest)
                 .then((res) => {
+                    let resData = res.data
                     console.log(res)
                     console.log(res.data)
+                    console.log(resData.isDone)
+                    console.log(resData.description)
+                    if(resData.description === 'Error has happened during image processing' ){
+                        clearInterval(timerId);
+                        alert('ПИТОН ЗАДУШИЛ САМ СЕБЯ');
+                    }else if(resData.description === 'This request is not exist'){
+                        alert('ТЫ КУДА ДОЛБИШЬСЯ?!!! ТУТ ЗАНЯТО, НАС НЕТ, ОБЕД ДО ОБЕДА')
+                        clearInterval(timerId);
+                    }else if(resData.isDone === true){
+                        console.log('Изображения готовы')
+                        clearInterval(timerId);
+                        requests()
+
+                    }else{
+                        console.log('ЖДЕМ ПОКА ЗМЕЯ дУшиться')
+                    }
+
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-            if(true){
-                clearInterval(timerId);
-            }
-        }, 2000);
+        }, 10000);
 
+    }
+
+    let url500 = 'http://localhost:8080/api/getoutput/VGG19/500/';
+    let url1000 = 'http://localhost:8080/api/getoutput/VGG19/1000/';
+    let url1500 = 'http://localhost:8080/api/getoutput/VGG19/1500/';
+    let url2000 = 'http://localhost:8080/api/getoutput/VGG19/2000/';
+    async function requests(){
+        axios
+            .get(url500 + uidRequest.uuidRequest)
+            .then((res) => {
+                let resData = res.data
+                console.log('500')
+                console.log(res)
+                console.log(resData)
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        axios
+            .get(url1000 + uidRequest.uuidRequest)
+            .then((res) => {
+                let resData = res.data
+                console.log('1000')
+                console.log(res)
+                console.log(resData)
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        axios
+            .get(url1500 + uidRequest.uuidRequest)
+            .then((res) => {
+                let resData = res.data
+                console.log('1500')
+                console.log(res)
+                console.log(resData)
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        axios
+            .get(url2000 + uidRequest.uuidRequest)
+            .then((res) => {
+                let resData = res.data
+                console.log('2000')
+                console.log(res)
+                console.log(resData)
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
 
