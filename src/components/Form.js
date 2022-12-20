@@ -11,6 +11,7 @@ const Form = () => {
     const [ answer, setAnswer ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
+
     const myImgonChange1 = function(event) {
         let target = event.target;
 
@@ -60,6 +61,7 @@ const Form = () => {
     }
 
     let url = 'http://localhost:8080/api/receive/VGG19';
+    let uidRequest = '';
 
     const handleSubmit = async(event) => {
         event.preventDefault()
@@ -77,15 +79,32 @@ const Form = () => {
                 },
             })
             .then((res) => {
-                successfulPost()
-                console.log(res)
+                uidRequest = res.data;
+                console.log(uidRequest)
+                successfulPost(uidRequest);
+
             })
             .catch((err) => {
                 console.log(err);
             });
     }
 
-    function successfulPost() {
+    const successfulPost = async() =>  {
+        // повторить с интервалом 2 секунды
+        let timerId = setInterval(() => {
+            axios
+                .get('http://localhost:8080/api/receive/VGG19/' + uidRequest)
+                .then((res) => {
+                    console.log(res)
+                    console.log(res.data)
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            if(true){
+                clearInterval(timerId);
+            }
+        }, 2000);
 
     }
 
