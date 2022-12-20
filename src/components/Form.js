@@ -80,7 +80,10 @@ const Form = () => {
             })
             .then((res) => {
                 uidRequest = res.data;
+                console.log('uidRequest')
                 console.log(uidRequest)
+                console.log('uidRequest.toString()')
+                console.log(uidRequest.toString())
                 successfulPost(uidRequest);
 
             })
