@@ -8,6 +8,8 @@ const Form = () => {
     const [ imgUrl2, setImgUrl2 ] = useState('');
     const [ imgUrl1Front, setImgUrl1Front ] = useState('');
     const [ imgUrl2Front, setImgUrl2Front ] = useState('');
+    const [ result, setResult ] = useState(null);
+    const [ uuid, setUuid ] = useState(null);
     const [ answer, setAnswer ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
@@ -136,6 +138,7 @@ const Form = () => {
                 console.log('500')
                 console.log(res)
                 console.log(resData)
+                setResult(resData)
 
             })
             .catch((err) => {
@@ -151,7 +154,7 @@ const Form = () => {
                 console.log('1000')
                 console.log(res)
                 console.log(resData)
-
+                setResult(resData)
             })
             .catch((err) => {
                 console.log(err);
@@ -166,7 +169,7 @@ const Form = () => {
                 console.log('1500')
                 console.log(res)
                 console.log(resData)
-
+                setResult(resData)
             })
             .catch((err) => {
                 console.log(err);
@@ -181,7 +184,7 @@ const Form = () => {
                 console.log('2000')
                 console.log(res)
                 console.log(resData)
-
+                setResult(resData)
             })
             .catch((err) => {
                 console.log(err);
@@ -205,6 +208,8 @@ const Form = () => {
             <button id="submit">
                 Отправить
             </button>
+            <input onChange={e =>  setUuid(e.target.value)} type="text" />
+            {uuid}
             <div onClick={requests500}>
                 -------------------
                 <br/>
@@ -248,6 +253,9 @@ const Form = () => {
                 <br/>
                 <br/>
                 -------------------
+            </div>
+            <div>
+                {result}
             </div>
         </form>
 
