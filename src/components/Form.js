@@ -6,6 +6,8 @@ const Form = () => {
     const fileRef = useRef(null);
     const [ imgUrl1, setImgUrl1 ] = useState('');
     const [ imgUrl2, setImgUrl2 ] = useState('');
+    const [ imgUrl1Front, setImgUrl1Front ] = useState('');
+    const [ imgUrl2Front, setImgUrl2Front ] = useState('');
     const [ answer, setAnswer ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
@@ -23,6 +25,13 @@ const Form = () => {
         }
 
         setImgUrl1(target.files);
+
+        let fileReader = new FileReader();
+        fileReader.onload = function() {
+            setImgUrl1Front(fileReader.result);
+        }
+
+        fileReader.readAsDataURL(target.files[0]);
     }
 
     const myImgonChange2 = function(event) {
@@ -38,7 +47,15 @@ const Form = () => {
             return;
         }
 
+
         setImgUrl2(target.files);
+
+        let fileReader = new FileReader();
+        fileReader.onload = function() {
+            setImgUrl2Front(fileReader.result);
+        }
+
+        fileReader.readAsDataURL(target.files[0]);
 
     }
 
@@ -60,11 +77,16 @@ const Form = () => {
                 },
             })
             .then((res) => {
-                console.log(res);
+                successfulPost()
+                console.log(res)
             })
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    function successfulPost() {
+
     }
 
 
@@ -72,12 +94,12 @@ const Form = () => {
         <form id="form" method="post"  onSubmit={handleSubmit}>
             <input onChange={e =>  myImgonChange1(e)} type="file" id="image-input-to-style" accept="image/jpeg, image/png, image/jpg"/>
             <div id="display-image-to-style">
-                <img src={imgUrl1} alt=""/>
+                <img src={imgUrl1Front} alt=""/>
             </div>
             <h4>Upload style image</h4>
             <input onChange={e =>  myImgonChange2(e)} type="file" id="image-input-style" accept="image/jpeg, image/png, image/jpg"/>
             <div id="display-image-style">
-                <img src={imgUrl2} alt=""/>
+                <img src={imgUrl2Front} alt=""/>
             </div>
             <button id="submit">
                 Отправить
