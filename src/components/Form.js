@@ -112,7 +112,10 @@ const Form = () => {
                     }else if(resData.isDone === true){
                         console.log('Изображения готовы')
                         clearInterval(timerId);
-                        requests()
+                        requests500();
+                        requests1000();
+                        requests1500();
+                        requests2000();
 
                     }else{
                         console.log('ЖДЕМ ПОКА ЗМЕЯ дУшиться')
@@ -130,7 +133,7 @@ const Form = () => {
     let url1000 = 'http://localhost:8080/api/getoutput/VGG19/1000/';
     let url1500 = 'http://localhost:8080/api/getoutput/VGG19/1500/';
     let url2000 = 'http://localhost:8080/api/getoutput/VGG19/2000/';
-    async function requests(){
+    async function requests500(){
         axios
             .get(url500 + uidRequest.uuidRequest)
             .then((res) => {
@@ -143,6 +146,9 @@ const Form = () => {
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    async function requests1000(){
         axios
             .get(url1000 + uidRequest.uuidRequest)
             .then((res) => {
@@ -155,6 +161,9 @@ const Form = () => {
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    async function requests1500(){
         axios
             .get(url1500 + uidRequest.uuidRequest)
             .then((res) => {
@@ -167,6 +176,9 @@ const Form = () => {
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    async function requests2000(){
         axios
             .get(url2000 + uidRequest.uuidRequest)
             .then((res) => {
@@ -180,6 +192,8 @@ const Form = () => {
                 console.log(err);
             });
     }
+
+
 
 
     return (
