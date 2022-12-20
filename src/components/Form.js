@@ -93,7 +93,7 @@ const Form = () => {
         // повторить с интервалом 2 секунды
         let timerId = setInterval(() => {
             axios
-                .get('http://localhost:8080/api/receive/VGG19/' + uidRequest)
+                .get('http://localhost:8080/api/receive/VGG19/' + uidRequest.toString())
                 .then((res) => {
                     console.log(res)
                     console.log(res.data)
