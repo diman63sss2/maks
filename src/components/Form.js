@@ -191,7 +191,7 @@ const Form = () => {
             });
     }
 
-
+    const Example = (data) => <img src={`data:image/jpeg;base64,${data}`} />
 
 
     return (
@@ -255,7 +255,7 @@ const Form = () => {
                 -------------------
             </div>
             <div>
-                {result}
+                {Example(result)}
             </div>
         </form>
 
