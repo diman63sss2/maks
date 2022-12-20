@@ -112,11 +112,6 @@ const Form = () => {
                     }else if(resData.isDone === true){
                         console.log('Изображения готовы')
                         clearInterval(timerId);
-                        requests500();
-                        requests1000();
-                        requests1500();
-                        requests2000();
-
                     }else{
                         console.log('ЖДЕМ ПОКА ЗМЕЯ дУшиться')
                     }
@@ -210,7 +205,52 @@ const Form = () => {
             <button id="submit">
                 Отправить
             </button>
+            <div onClick={requests500}>
+                -------------------
+                <br/>
+                <br/>
+                <br/>
+                500
+                <br/>
+                <br/>
+                <br/>
+                -------------------
+            </div>
+            <div onClick={requests1000}>
+                -------------------
+                <br/>
+                <br/>
+                <br/>
+                1000
+                <br/>
+                <br/>
+                <br/>
+                -------------------
+            </div>
+            <div  onClick={requests1500}>
+                -------------------
+                <br/>
+                <br/>
+                <br/>
+                1500
+                <br/>
+                <br/>
+                <br/>
+                -------------------
+            </div>
+            <div  onClick={requests2000}>
+                -------------------
+                <br/>
+                <br/>
+                <br/>
+                2000
+                <br/>
+                <br/>
+                <br/>
+                -------------------
+            </div>
         </form>
+
     );
 };
 
