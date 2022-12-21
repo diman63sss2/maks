@@ -144,7 +144,7 @@ const Form = () => {
                 console.log(resData)
                 console.log('resData.absolutePath')
                 console.log(resData.absolutePath)
-                setResult(resData.absolutePath)
+                setResult(resData.imageInBytes)
 
             })
             .catch((err) => {
@@ -163,7 +163,7 @@ const Form = () => {
                 console.log(resData)
                 console.log('resData.absolutePath')
                 console.log(resData.absolutePath)
-                setResult(resData.absolutePath)
+                setResult(resData.imageInBytes)
             })
             .catch((err) => {
                 console.log(err);
@@ -181,7 +181,7 @@ const Form = () => {
                 console.log(resData)
                 console.log('resData.absolutePath')
                 console.log(resData.absolutePath)
-                setResult(resData.absolutePath)
+                setResult(resData.imageInBytes)
             })
             .catch((err) => {
                 console.log(err);
@@ -199,7 +199,7 @@ const Form = () => {
                 console.log(resData)
                 console.log('resData.absolutePath')
                 console.log(resData.absolutePath)
-                setResult(resData.absolutePath)
+                setResult(resData.imageInBytes)
             })
             .catch((err) => {
                 console.log(err);
@@ -279,7 +279,7 @@ const Form = () => {
                 -------------------
             </div>
             <div>
-                <img src={result} />
+                <img src={'data:image/png;base64,' + result2} alt={'img'}/>
                 <img onClick={testFunction} src={'data:image/png;base64,' + result2} alt={'Нажми на меня'}/>
             </div>
         </form>
