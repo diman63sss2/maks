@@ -2,6 +2,7 @@ import React, {useCallback, useRef, useState} from 'react';
 import axios from "axios";
 import {bytesToBase64} from "byte-base64";
 
+
 const Form = () => {
     const UPLOAD_AVATAR = 'http://localhost:8080/api/upload_avatar';
     const fileRef = useRef(null);
@@ -10,9 +11,12 @@ const Form = () => {
     const [ imgUrl1Front, setImgUrl1Front ] = useState('');
     const [ imgUrl2Front, setImgUrl2Front ] = useState('');
     const [ result, setResult ] = useState(null);
+    const [ result2, setResult2 ] = useState(null);
     const [ uuid, setUuid ] = useState(null);
     const [ answer, setAnswer ] = useState(null);
     const [ loading, setLoading ] = useState(false);
+
+
 
 
     const myImgonChange1 = function(event) {
@@ -127,6 +131,7 @@ const Form = () => {
 
     }
 
+
     let url500 = 'http://localhost:8080/api/getoutput/VGG19/500/';
     let url1000 = 'http://localhost:8080/api/getoutput/VGG19/1000/';
     let url1500 = 'http://localhost:8080/api/getoutput/VGG19/1500/';
@@ -139,9 +144,17 @@ const Form = () => {
                 console.log('500')
                 console.log(res)
                 console.log(resData)
-                let base64 = bytesToBase64(resData)
-
-                setResult(base64)
+                let blob = new Blob([resData], {type: 'image/png'});
+                console.log('blob')
+                console.log(blob)
+                let url = URL.createObjectURL(blob);
+                console.log('url')
+                console.log(url)
+                let img = new Image();
+                img.src = url;
+                console.log('img')
+                console.log(img)
+                setResult(url)
 
             })
             .catch((err) => {
@@ -157,9 +170,17 @@ const Form = () => {
                 console.log('1000')
                 console.log(res)
                 console.log(resData)
-                let base64 = bytesToBase64(resData)
-
-                setResult(base64)
+                let blob = new Blob([resData], {type: 'image/png'});
+                console.log('blob')
+                console.log(blob)
+                let url = URL.createObjectURL(blob);
+                console.log('url')
+                console.log(url)
+                let img = new Image();
+                img.src = url;
+                console.log('img')
+                console.log(img)
+                setResult(url)
             })
             .catch((err) => {
                 console.log(err);
@@ -174,9 +195,17 @@ const Form = () => {
                 console.log('1500')
                 console.log(res)
                 console.log(resData)
-                let base64 = bytesToBase64(resData)
-
-                setResult(base64)
+                let blob = new Blob([resData], {type: 'image/png'});
+                console.log('blob')
+                console.log(blob)
+                let url = URL.createObjectURL(blob);
+                console.log('url')
+                console.log(url)
+                let img = new Image();
+                img.src = url;
+                console.log('img')
+                console.log(img)
+                setResult(url)
             })
             .catch((err) => {
                 console.log(err);
@@ -191,13 +220,25 @@ const Form = () => {
                 console.log('2000')
                 console.log(res)
                 console.log(resData)
-                let base64 = bytesToBase64(resData)
-
-                setResult(base64)
+                let blob = new Blob([resData], {type: 'image/png'});
+                console.log('blob')
+                console.log(blob)
+                let url = URL.createObjectURL(blob);
+                console.log('url')
+                console.log(url)
+                let img = new Image();
+                img.src = url;
+                console.log('img')
+                console.log(img)
+                setResult(url)
             })
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    function testFunction(){
+        console.log(1)
     }
 
 
@@ -263,7 +304,8 @@ const Form = () => {
                 -------------------
             </div>
             <div>
-                <img src={"data:image/png;base64," + result} />
+                <img src={result} />
+                <img onClick={testFunction} src={'data:image/png;base64,' + result2} alt={'Нажми на меня'}/>
             </div>
         </form>
 
