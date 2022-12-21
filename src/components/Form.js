@@ -1,5 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import axios from "axios";
+import {bytesToBase64} from "byte-base64";
 
 const Form = () => {
     const UPLOAD_AVATAR = 'http://localhost:8080/api/upload_avatar';
@@ -138,7 +139,9 @@ const Form = () => {
                 console.log('500')
                 console.log(res)
                 console.log(resData)
-                setResult(resData)
+                let base64 = bytesToBase64(resData)
+
+                setResult(base64)
 
             })
             .catch((err) => {
@@ -154,7 +157,9 @@ const Form = () => {
                 console.log('1000')
                 console.log(res)
                 console.log(resData)
-                setResult(resData)
+                let base64 = bytesToBase64(resData)
+
+                setResult(base64)
             })
             .catch((err) => {
                 console.log(err);
@@ -169,7 +174,9 @@ const Form = () => {
                 console.log('1500')
                 console.log(res)
                 console.log(resData)
-                setResult(resData)
+                let base64 = bytesToBase64(resData)
+
+                setResult(base64)
             })
             .catch((err) => {
                 console.log(err);
@@ -184,14 +191,15 @@ const Form = () => {
                 console.log('2000')
                 console.log(res)
                 console.log(resData)
-                setResult(resData)
+                let base64 = bytesToBase64(resData)
+
+                setResult(base64)
             })
             .catch((err) => {
                 console.log(err);
             });
     }
 
-    const Example = (data) => <img src={`data:image/png;base64,${data}`} />
 
 
     return (
@@ -255,7 +263,7 @@ const Form = () => {
                 -------------------
             </div>
             <div>
-                {Example(result)}
+                <img src={"data:image/png;base64," + result} />
             </div>
         </form>
 
