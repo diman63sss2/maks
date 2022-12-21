@@ -83,7 +83,7 @@ const Form = () => {
                 },
             })
             .then((res) => {
-                uidRequest = res.data;
+                uidRequest = res.data.uuidRequest;
                 console.log('uidRequest')
                 console.log(uidRequest)
                 console.log('uidRequest.toString()')
@@ -100,7 +100,7 @@ const Form = () => {
         // повторить с интервалом 2 секунды
         let timerId = setInterval(() => {
             axios
-                .get('http://localhost:8080/api/receive/VGG19/' + uidRequest.uuidRequest)
+                .get('http://localhost:8080/api/receive/VGG19/' + uidRequest)
                 .then((res) => {
                     let resData = res.data
                     console.log(res)
@@ -135,7 +135,7 @@ const Form = () => {
     let url2000 = 'http://localhost:8080/api/getoutput/VGG19/2000/';
     async function requests500(){
         axios
-            .get(url500 + uidRequest.uuidRequest)
+            .get(url500 + uidRequest)
             .then((res) => {
                 let resData = res.data
                 console.log('500')
@@ -153,7 +153,7 @@ const Form = () => {
 
     async function requests1000(){
         axios
-            .get(url1000 + uidRequest.uuidRequest)
+            .get(url1000 + uidRequest)
             .then((res) => {
                 let resData = res.data
                 console.log('1000')
@@ -170,7 +170,7 @@ const Form = () => {
 
     async function requests1500(){
         axios
-            .get(url1500 + uidRequest.uuidRequest)
+            .get(url1500 + uidRequest)
             .then((res) => {
                 let resData = res.data
                 console.log('1500')
@@ -187,7 +187,7 @@ const Form = () => {
 
     async function requests2000(){
         axios
-            .get(url2000 + uidRequest.uuidRequest)
+            .get(url2000 + uidRequest)
             .then((res) => {
                 let resData = res.data
                 console.log('2000')
@@ -206,6 +206,10 @@ const Form = () => {
         console.log(1)
     }
 
+    function uuidSet(value) {
+        uidRequest = value;
+        setUuid(value)
+    }
 
 
     return (
@@ -222,7 +226,7 @@ const Form = () => {
             <button id="submit">
                 Отправить
             </button>
-            <input onChange={e =>  setUuid(e.target.value)} type="text" />
+            <input onChange={e => uuidSet(e.target.value)} type="text" />
             {uuid}
             <div onClick={requests500}>
                 -------------------
