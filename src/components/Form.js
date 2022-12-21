@@ -4,8 +4,7 @@ import {bytesToBase64} from "byte-base64";
 
 
 const Form = () => {
-    const UPLOAD_AVATAR = 'http://localhost:8080/api/upload_avatar';
-    const fileRef = useRef(null);
+
     const [ imgUrl1, setImgUrl1 ] = useState('');
     const [ imgUrl2, setImgUrl2 ] = useState('');
     const [ imgUrl1Front, setImgUrl1Front ] = useState('');
@@ -13,8 +12,6 @@ const Form = () => {
     const [ result, setResult ] = useState(null);
     const [ result2, setResult2 ] = useState(null);
     const [ uuid, setUuid ] = useState(null);
-    const [ answer, setAnswer ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
 
 
 
@@ -144,17 +141,9 @@ const Form = () => {
                 console.log('500')
                 console.log(res)
                 console.log(resData)
-                let blob = new Blob([resData], {type: 'image/png'});
-                console.log('blob')
-                console.log(blob)
-                let url = URL.createObjectURL(blob);
-                console.log('url')
-                console.log(url)
-                let img = new Image();
-                img.src = url;
-                console.log('img')
-                console.log(img)
-                setResult(url)
+                console.log('resData.absolutePath')
+                console.log(resData.absolutePath)
+                setResult(resData.absolutePath)
 
             })
             .catch((err) => {
@@ -170,17 +159,9 @@ const Form = () => {
                 console.log('1000')
                 console.log(res)
                 console.log(resData)
-                let blob = new Blob([resData], {type: 'image/png'});
-                console.log('blob')
-                console.log(blob)
-                let url = URL.createObjectURL(blob);
-                console.log('url')
-                console.log(url)
-                let img = new Image();
-                img.src = url;
-                console.log('img')
-                console.log(img)
-                setResult(url)
+                console.log('resData.absolutePath')
+                console.log(resData.absolutePath)
+                setResult(resData.absolutePath)
             })
             .catch((err) => {
                 console.log(err);
@@ -195,17 +176,9 @@ const Form = () => {
                 console.log('1500')
                 console.log(res)
                 console.log(resData)
-                let blob = new Blob([resData], {type: 'image/png'});
-                console.log('blob')
-                console.log(blob)
-                let url = URL.createObjectURL(blob);
-                console.log('url')
-                console.log(url)
-                let img = new Image();
-                img.src = url;
-                console.log('img')
-                console.log(img)
-                setResult(url)
+                console.log('resData.absolutePath')
+                console.log(resData.absolutePath)
+                setResult(resData.absolutePath)
             })
             .catch((err) => {
                 console.log(err);
@@ -220,17 +193,9 @@ const Form = () => {
                 console.log('2000')
                 console.log(res)
                 console.log(resData)
-                let blob = new Blob([resData], {type: 'image/png'});
-                console.log('blob')
-                console.log(blob)
-                let url = URL.createObjectURL(blob);
-                console.log('url')
-                console.log(url)
-                let img = new Image();
-                img.src = url;
-                console.log('img')
-                console.log(img)
-                setResult(url)
+                console.log('resData.absolutePath')
+                console.log(resData.absolutePath)
+                setResult(resData.absolutePath)
             })
             .catch((err) => {
                 console.log(err);
