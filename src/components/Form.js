@@ -116,6 +116,7 @@ const Form = () => {
                     }else if(resData.isDone === true){
                         console.log('Изображения готовы')
                         clearInterval(timerId);
+                        initComparisons()
                     }else{
                         console.log('ЖДЕМ ПОКА ЗМЕЯ дУшиться')
                     }
@@ -145,7 +146,7 @@ const Form = () => {
                 console.log('resData.absolutePath')
                 console.log(resData.absolutePath)
                 setResult(resData.imageInBytes)
-                initComparisons()
+
             })
             .catch((err) => {
                 console.log(err);
