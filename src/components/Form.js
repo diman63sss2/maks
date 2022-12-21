@@ -134,8 +134,9 @@ const Form = () => {
     let url1500 = 'http://localhost:8080/api/getoutput/VGG19/1500/';
     let url2000 = 'http://localhost:8080/api/getoutput/VGG19/2000/';
     async function requests500(){
+        console.log(uuid)
         axios
-            .get(url500 + uidRequest)
+            .get(url500 + uuid)
             .then((res) => {
                 let resData = res.data
                 console.log('500')
@@ -152,8 +153,9 @@ const Form = () => {
     }
 
     async function requests1000(){
+        console.log(uuid)
         axios
-            .get(url1000 + uidRequest)
+            .get(url1000 + uuid)
             .then((res) => {
                 let resData = res.data
                 console.log('1000')
@@ -169,8 +171,9 @@ const Form = () => {
     }
 
     async function requests1500(){
+        console.log(uuid)
         axios
-            .get(url1500 + uidRequest)
+            .get(url1500 + uuid)
             .then((res) => {
                 let resData = res.data
                 console.log('1500')
@@ -186,8 +189,9 @@ const Form = () => {
     }
 
     async function requests2000(){
+        console.log(uuid)
         axios
-            .get(url2000 + uidRequest)
+            .get(url2000 + uuid)
             .then((res) => {
                 let resData = res.data
                 console.log('2000')
@@ -209,6 +213,7 @@ const Form = () => {
     function uuidSet(value) {
         console.log(value)
         uidRequest = value;
+        console.log(uidRequest)
         setUuid(value)
     }
 
