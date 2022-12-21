@@ -207,6 +207,7 @@ const Form = () => {
     }
 
     function uuidSet(value) {
+        console.log(value)
         uidRequest = value;
         setUuid(value)
     }
