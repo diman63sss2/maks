@@ -279,7 +279,7 @@ const Form = () => {
                 -------------------
             </div>
             <div>
-                <img src={'data:image/png;base64,' + result2} alt={'img'}/>
+                <img src={'data:image/png;base64,' + result} alt={'img'}/>
                 <img onClick={testFunction} src={'data:image/png;base64,' + result2} alt={'Нажми на меня'}/>
             </div>
         </form>
