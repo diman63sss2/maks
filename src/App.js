@@ -1,5 +1,6 @@
 import './App.css';
 import Form from "./components/Form";
+import axios from "axios";
 
 
 function App() {
@@ -7,7 +8,6 @@ function App() {
   return (
     <div className="App">
         <div className="container">
-            <h4>Upload image to style</h4>
             <Form/>
         </div>
 

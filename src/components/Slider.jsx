@@ -1,83 +1,9 @@
-import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
-import axios from "axios";
-import {bytesToBase64} from "byte-base64";
-import FormImages from "./FormImage";
-import FormImage from "./FormImage";
-import {findAllByDisplayValue} from "@testing-library/react";
-import VariationImg from "./VariationImg";
+import React, {useEffect} from 'react';
 
-
-const Form = () => {
-
-    const [ result, setResult ] = useState(null);
-    const [ uuid, setUuid ] = useState();
-    const [ flager, setFlager ] = useState('');
-    let uuidComp = '';
-
-
-
-    const [imgStyle, setImgStyle] = useState('');
-    const [imgToStyle, setImgToStyle] = useState('');
-
-    const url = 'http://localhost:8080/api/receive/VGG19';
-
-    const handleSubmit = async(event) => {
-        event.preventDefault()
-        let fileOriginal = imgStyle[0];
-        let fileStyle = imgToStyle[0];
-        const formData = new FormData();
-        formData.append("original_image", fileOriginal);
-        formData.append("style_image", fileStyle);
-        if(typeof fileOriginal !== "undefined" && typeof fileStyle !== "undefined"){
-            return;
-            axios
-                .post(url, formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                })
-                .then((res) => {
-                    setUuid(res.data.uuidRequest);
-                    successfulPost(res.data.uuidRequest);
-                    console.log('uuid: ' . res.data.uuidRequest);
-
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else
-            alert("Задайте все изображения");
-
-    }
-
-    const successfulPost = async(uuid) =>  {
-        // повторить с интервалом 2 секунды
-        let timerId = setInterval(() => {
-            axios
-                .get('http://localhost:8080/api/receive/VGG19/' + uuid)
-                .then((res) => {
-                    let resData = res.data
-                    if(resData.description === 'Error has happened during image processing' ){
-                        clearInterval(timerId);
-                        alert('Error has happened during image processing');
-                    }else if(resData.description === 'This request is not exist'){
-                        alert('This request is not exist')
-                        clearInterval(timerId);
-                    }else if(resData.isDone === true){
-                        alert('Изображения готовы')
-                        clearInterval(timerId);
-                    }else{
-                        console.log('Ожидайте кончания работы программы')
-                    }
-
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }, 5000);
-
-    }
-
+const Slider = ({img, resultImg}) => {
+    useEffect(()=>{
+        initComparisons()
+    })
 
     function initComparisons() {
         let x, i;
@@ -155,46 +81,16 @@ const Form = () => {
             }
         }
     }
-
-
     return (
-        <div>
-            <form id="form" method="post"  onSubmit={handleSubmit}>
-                <FormImage
-                    title={'Upload image to style'}
-                    setImg={setImgToStyle}
-                />
-                <FormImage
-                    title={'Upload image style'}
-                    setImg={setImgStyle}
-                />
-                <button id="submit">
-                    Отправить
-                </button>
-                {uuid}
-            </form>
-
-            {
-                imgStyle &&
-                <div>
-                    <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
-                    <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
-                    <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
-                    <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
-                </div>
-            }
-            <div className="img-comp-container">
-                <div className="img-comp-img">
-                    <img src={imgStyle} width="300" height="200"/>
-                </div>
-                <div className="img-comp-img img-comp-overlay">
-                    <img src={'data:image/png;base64,' + result} width="300" height="200"/>
-                </div>
+        <div className="img-comp-container">
+            <div className="img-comp-img">
+                <img src={img} width="300" height="200"/>
+            </div>
+            <div className="img-comp-img img-comp-overlay">
+                <img src={'data:image/png;base64,' + resultImg} width="300" height="200"/>
             </div>
         </div>
-
-
     );
 };
 
-export default Form;
+export default Slider;
