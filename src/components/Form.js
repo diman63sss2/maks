@@ -11,6 +11,7 @@ const Form = () => {
 
     const [ result, setResult ] = useState(null);
     const [ uuid, setUuid ] = useState();
+    const [ succses, setSuccses ] = useState();
     const [ flager, setFlager ] = useState('');
     let uuidComp = '';
 
@@ -65,6 +66,7 @@ const Form = () => {
                     }else if(resData.isDone === true){
                         alert('Изображения готовы')
                         clearInterval(timerId);
+                        setSuccses(true)
                     }else{
                         console.log('Ожидайте кончания работы программы')
                     }
@@ -252,7 +254,7 @@ const Form = () => {
             </form>
             <button onClick={()=>initComparisons()}>Запуск слайдера</button>
             {
-                uuid &&
+                succses &&
                 <div>
                     <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
                     <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
