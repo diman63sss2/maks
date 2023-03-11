@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const FormImage = ({title, setImg}) => {
+const FormImage = ({title, setImg, setImgFront}) => {
 
     const [ imgSrc, setImgSrc ] = useState('');
 
@@ -24,7 +24,7 @@ const FormImage = ({title, setImg}) => {
         let fileReader = new FileReader();
         fileReader.onload = function() {
             setImgSrc(fileReader.result);
-            setImg(fileReader.result)
+            setImgFront(fileReader.result)
         }
 
         fileReader.readAsDataURL(target.files[0]);

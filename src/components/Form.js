@@ -24,6 +24,9 @@ const Form = () => {
     const [imgStyle, setImgStyle] = useState('');
     const [imgToStyle, setImgToStyle] = useState('');
 
+    const [imgStyleFront, setImgStyleFront] = useState('');
+    const [imgToStyleFront, setImgToStyleFront] = useState('');
+
     const url = 'http://localhost:8080/api/receive/VGG19';
 
     const handleSubmit = async(event) => {
@@ -246,10 +249,12 @@ const Form = () => {
                 <FormImage
                     title={'original_image'}
                     setImg={setImgStyle}
+                    setImgFront={setImgStyleFront}
                 />
                 <FormImage
                     title={'style_image'}
                     setImg={setImgToStyle}
+                    setImgFront={setImgToStyleFront}
                 />
                 <button id="submit">
                     Отправить
@@ -260,10 +265,10 @@ const Form = () => {
                 succses &&
                 <div>
                     <button onClick={()=>initComparisons()}>Запуск слайдера</button>
-                    <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
-                    <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
-                    <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
-                    <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
+                    <VariationImg title={'500'} img={imgStyleFront} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
+                    <VariationImg title={'1000'} img={imgStyleFront} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
+                    <VariationImg title={'1500'} img={imgStyleFront} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
+                    <VariationImg title={'2000'} img={imgStyleFront} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
                 </div>
             }
         </div>
