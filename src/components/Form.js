@@ -12,6 +12,10 @@ const Form = () => {
     const [ result, setResult ] = useState(null);
     const [ uuid, setUuid ] = useState();
     const [ succses, setSuccses ] = useState();
+    const [ succses500, setSuccses500 ] = useState();
+    const [ succses1000, setSuccses1000 ] = useState();
+    const [ succses1500, setSuccses1500 ] = useState();
+    const [ succses2000, setSuccses2000 ] = useState();
     const [ flager, setFlager ] = useState('');
     let uuidComp = '';
 
@@ -66,7 +70,7 @@ const Form = () => {
                     }else if(resData.isDone === true){
                         alert('Изображения готовы')
                         clearInterval(timerId);
-                        setSuccses(true)
+                        setSuccses(true);
                     }else{
                         console.log('Ожидайте кончания работы программы')
                     }
@@ -252,16 +256,41 @@ const Form = () => {
                 </button>
                 {uuid}
             </form>
-            <button onClick={()=>initComparisons()}>Запуск слайдера</button>
             {
                 succses &&
                 <div>
-                    <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
-                    <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
-                    <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
-                    <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
+                    <button onClick={()=>setSuccses500(true)}>
+                        GOOOOO 500
+                    </button>
+                    <button onClick={()=>setSuccses1000(true)}>
+                        GOOOOO 1000
+                    </button>
+                    <button onClick={()=>setSuccses1500(true)}>
+                        GOOOOO 1500
+                    </button>
+                    <button onClick={()=>setSuccses2000(true)}>
+                        GOOOOO 2000
+                    </button>
+                    <button onClick={()=>initComparisons()}>Запуск слайдера</button>
                 </div>
             }
+            {
+                succses500 &&
+                <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
+            }
+            {
+                succses1000 &&
+                <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
+            }
+            {
+                succses1500 &&
+                <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
+            }
+            {
+                succses2000 &&
+                <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
+            }
+
         </div>
 
 

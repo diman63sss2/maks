@@ -7,6 +7,7 @@ const VariationImg = ({uuid, url, title, img}) => {
     const [result, setResult] = useState();
 
     useEffect(()=>{
+        console.log('useEffect' + title)
         request();
     })
 

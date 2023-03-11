@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 
 const Slider = ({img, resultImg}) => {
+    console.log('Slider')
+    console.log(img[0])
     return (
         <div className="img-comp-container">
             <div className="img-comp-img">
