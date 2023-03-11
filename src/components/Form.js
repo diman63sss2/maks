@@ -160,11 +160,11 @@ const Form = () => {
         <div>
             <form id="form" method="post"  onSubmit={handleSubmit}>
                 <FormImage
-                    title={'Upload image to style'}
+                    title={'style_image'}
                     setImg={setImgToStyle}
                 />
                 <FormImage
-                    title={'Upload image style'}
+                    title={'original_image'}
                     setImg={setImgStyle}
                 />
                 <button id="submit">

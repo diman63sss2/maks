@@ -3,6 +3,11 @@ import React, {useEffect} from 'react';
 const Slider = ({img, resultImg}) => {
     useEffect(()=>{
         initComparisons()
+        console.log('useEffect slider')
+        console.log('resultImg')
+        console.log(resultImg)
+        console.log('img')
+        console.log(img)
     })
 
     function initComparisons() {
