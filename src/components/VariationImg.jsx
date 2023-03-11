@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Slider from "./Slider";
 
 const VariationImg = ({uuid, url, title, img}) => {
 
     const [result, setResult] = useState();
+
+    useEffect(()=>{
+        request();
+    })
 
     async function request(){
         console.log('request' + uuid)
@@ -18,7 +22,6 @@ const VariationImg = ({uuid, url, title, img}) => {
             .catch((err) => {
                 console.log(err);
             });
-
     }
 
 
@@ -30,7 +33,7 @@ const VariationImg = ({uuid, url, title, img}) => {
                 <br/>
                 <br/>
                 <br/>
-                <button onClick={request}>{title}</button>
+                {title}
                 <br/>
                 <br/>
                 <br/>
