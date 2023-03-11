@@ -12,7 +12,7 @@ const VariationImg = ({uuid, url, title, img}) => {
             .get(url + uuid)
             .then((res) => {
                 let resData = res.data
-                result(resData.imageInBytes)
+                setResult(resData.imageInBytes)
 
             })
             .catch((err) => {
