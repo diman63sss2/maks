@@ -259,38 +259,13 @@ const Form = () => {
             {
                 succses &&
                 <div>
-                    <button onClick={()=>setSuccses500(true)}>
-                        GOOOOO 500
-                    </button>
-                    <button onClick={()=>setSuccses1000(true)}>
-                        GOOOOO 1000
-                    </button>
-                    <button onClick={()=>setSuccses1500(true)}>
-                        GOOOOO 1500
-                    </button>
-                    <button onClick={()=>setSuccses2000(true)}>
-                        GOOOOO 2000
-                    </button>
                     <button onClick={()=>initComparisons()}>Запуск слайдера</button>
+                    <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
+                    <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
+                    <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
+                    <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
                 </div>
             }
-            {
-                succses500 &&
-                <VariationImg title={'500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/500/'}/>
-            }
-            {
-                succses1000 &&
-                <VariationImg title={'1000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1000/'}/>
-            }
-            {
-                succses1500 &&
-                <VariationImg title={'1500'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/1500/'}/>
-            }
-            {
-                succses2000 &&
-                <VariationImg title={'2000'} img={imgStyle} uuid={uuid} url={'http://localhost:8080/api/getoutput/VGG19/2000/'}/>
-            }
-
         </div>
 
 

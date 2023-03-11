@@ -6,11 +6,6 @@ const VariationImg = ({uuid, url, title, img}) => {
 
     const [result, setResult] = useState();
 
-    useEffect(()=>{
-        console.log('useEffect' + title)
-        request();
-    })
-
     async function request(){
         console.log('request' + uuid)
         axios
@@ -34,7 +29,9 @@ const VariationImg = ({uuid, url, title, img}) => {
                 <br/>
                 <br/>
                 <br/>
-                {title}
+                <button onClick={()=> request()}>
+                    {title}
+                </button>
                 <br/>
                 <br/>
                 <br/>

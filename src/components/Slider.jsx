@@ -6,7 +6,7 @@ const Slider = ({img, resultImg}) => {
     return (
         <div className="img-comp-container">
             <div className="img-comp-img">
-                <img src={img[0]} width="300" height="200"/>
+                <img src={img[0].file} width="300" height="200"/>
             </div>
             <div className="img-comp-img img-comp-overlay">
                 <img src={'data:image/png;base64,' + resultImg} width="300" height="200"/>
