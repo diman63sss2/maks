@@ -24,9 +24,11 @@ const FormImage = ({title, setImg}) => {
         let fileReader = new FileReader();
         fileReader.onload = function() {
             setImgSrc(fileReader.result);
+            setImg(fileReader.result)
         }
 
         fileReader.readAsDataURL(target.files[0]);
+
 
     }
 
