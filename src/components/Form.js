@@ -29,7 +29,6 @@ const Form = () => {
         formData.append("original_image", fileOriginal);
         formData.append("style_image", fileStyle);
         if(typeof fileOriginal !== "undefined" && typeof fileStyle !== "undefined"){
-            return;
             axios
                 .post(url, formData, {
                     headers: {
